@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -43,6 +44,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //dd(Auth::user()->id);
         $request->validate([
             'product_name'=>'required',
             'product_price'=> 'required|integer',
@@ -50,6 +52,7 @@ class ProductController extends Controller
           ]);
           $product = new Product([
             'product_name' => $request->get('product_name'),
+            'user_id' =>Auth::user()->id,
             'product_price'=> $request->get('product_price'),
             'product_qty'=> $request->get('product_qty')
           ]);

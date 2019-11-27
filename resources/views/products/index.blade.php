@@ -24,17 +24,17 @@
     <thead>
         <tr>
         
-          <td>ID</td>
+          <!-- <td>ID</td> -->
           <td>Item Name</td>
           <td>Item Price</td>
           <td>Item Condition(1-10)</td>
-          <td colspan="2">Action</td>
+        
         </tr>
     </thead>
     <tbody>
         @foreach($products as $product)
         <tr>
-            <td>{{$product->id}}</td>
+            <!-- <td>{{$product->id}}</td> -->
             <td>{{$product->product_name}}</td>
             <td>{{$product->product_price}}</td>
             <td>{{$product->product_qty}}</td>
