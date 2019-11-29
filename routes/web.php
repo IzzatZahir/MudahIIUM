@@ -23,6 +23,10 @@ Route::get('/products', function () {
     return view('products');
 });
 
+Route::get('/buy', function () {
+    return view('buy');
+});
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');

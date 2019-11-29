@@ -87,8 +87,9 @@
                 </div>
 
                 <div class="links">
-                    <!-- <a href="/category">View Category</a> -->
+                    <a href="/category">View Category</a>
                     <a href="/products">Sell your Items</a>
+                    <a href="/products">Buy Items</a>
                 </div>
             </div>
         </div>

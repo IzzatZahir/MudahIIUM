@@ -54,7 +54,8 @@ class ProductController extends Controller
             'product_name' => $request->get('product_name'),
             'user_id' =>Auth::user()->id,
             'product_price'=> $request->get('product_price'),
-            'product_qty'=> $request->get('product_qty')
+            'product_qty'=> $request->get('product_qty'),
+            'category_id'=> $request->get('category_id')
           ]);
           $product->save();
           return redirect('/products')->with('success', 'Item has been added');
