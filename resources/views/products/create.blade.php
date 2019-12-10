@@ -1,59 +1,49 @@
 @extends('layout')
 
 @section('content')
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="card uper">
-  <div class="card-header">
-    Add Product
-  </div>
-  <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br />
-    @endif
-      <form method="post" action="{{ route('products.store') }}">
-          <div class="form-group">
-              @csrf
-              <label for="name">Product Name:</label>
-              <input type="text" class="form-control" name="product_name"/>
-          </div>
 
-          <div class="form-group">
-              <label for="price">Product Price :</label>
-              <input type="text" class="form-control" name="product_price"/>
-          </div>
+    <h3>Add Product</h3>
 
-          <div class="form-group">
-              <label for="quantity">Product Quality(rate 1 to 10):</label>
-              <input type="text" class="form-control" name="product_qty"/>
-          </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            {!! Form::open(['route' => 'products.store', 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
 
-          <div class="form-group">
-              <label for="category">Product Category:</label>
-              <select name= "category_id">
-              <option value = '1'> Books</option>
-              <option value = '2'> Men's Clothing</option>
-              <option value = '3'> Women's Clothing</option>
-              <option value = '4'> Mobile Phones & Gadgets</option>
-              <option value = '5'> Computer & Accesories</option>
-              <option value = '6'> Jobs & Services</option>
-              <option value = '7'> Others</option>
-              <select>
+            <div class="form-group">
+                {{ Form::label('name', 'Name') }}
+                {{ Form::text('name', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
+            </div>
 
-              
-          </div>
+            <div class="form-group">
+                {{ Form::label('description', 'Description') }}
+                {{ Form::text('description', null, array('class' => 'form-control')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('price', 'Price') }}
+                {{ Form::text('price', null, array('class' => 'form-control')) }}
+            </div>
 
-          <button type="submit" class="btn btn-primary">Add</button>
-      </form>
-  </div>
-</div>
+            <!-- <div class="form-group">
+            {{ Form::hidden('invisible', 'secret', array('user_id'=> Auth::user()->id )) }}
+            <input type="hidden" value="('user_id'=>'Auth::user()->id')" name="user_id">
+            </div> -->
+
+
+            <div class="form-group">
+                {{ Form::label('category_id', 'Categories') }}
+                {{ Form::select('category_id', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+            </div>
+
+            <div class="form-group">
+                {{ Form::label('image', 'Image') }}
+                {{ Form::file('image',array('class' => 'form-control')) }}
+            </div>
+
+             {{ Form::submit('Create', array('class' => 'btn btn-default')) }}
+            {!! Form::close() !!}
+
+        </div>
+    </div>
+
+
+
 @endsection

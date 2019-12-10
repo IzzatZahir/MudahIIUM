@@ -1,42 +1,43 @@
 @extends('layout')
 
 @section('content')
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="card uper">
-  <div class="card-header">
-    Edit Item
-  </div>
-  <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br />
-    @endif
-      <form method="post" action="{{ route('products.update', $product->id) }}">
-        @method('PATCH')
-        @csrf
-        <div class="form-group">
-          <label for="name">Item Name:</label>
-          <input type="text" class="form-control" name="product_name" value={{ $product->product_name }} />
+
+    <h3>Add Product</h3>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            {!! Form::model($product,['route' => ['products.update',$product->id], 'method' => 'PUT', 'files' => true]) !!}
+            <div class="form-group">
+                {{ Form::label('name', 'Name') }}
+                {{ Form::text('name', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
+            </div>
+
+            <div class="form-group">
+                {{ Form::label('description', 'Description') }}
+                {{ Form::text('description', null, array('class' => 'form-control')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('price', 'Price') }}
+                {{ Form::text('price', null, array('class' => 'form-control')) }}
+            </div>
+
+            <div class="form-group">
+                {{ Form::label('category_id', 'Categories') }}
+                {{ Form::select('category_id', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+            </div>
+
+            <div class="form-group">
+                {{ Form::label('image', 'Image') }}
+                {{ Form::file('image',array('class' => 'form-control')) }}
+            </div>
+
+             {{ Form::submit('Edit', array('class' => 'btn btn-default')) }}
+            {!! Form::close() !!}
+
+
         </div>
-        <div class="form-group">
-          <label for="price">Item Price :</label>
-          <input type="text" class="form-control" name="product_price" value={{ $product->product_price }} />
-        </div>
-        <div class="form-group">
-          <label for="quantity">Item Quality(1-10):</label>
-          <input type="text" class="form-control" name="product_qty" value={{ $product->product_qty }} />
-        </div>
-        <button type="submit" class="btn btn-primary">Update</button>
-      </form>
-  </div>
-</div>
+    </div>
+
+
+
 @endsection

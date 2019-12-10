@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontController@index');
 
-Route::get('/category', function () {
-    return view('category');
-});
+// Route::get('/', function () {
+    // return view('welcome');
+// });
 
 Route::get('/products', function () {
     return view('products');
@@ -29,7 +27,16 @@ Route::get('/buy', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function(){
+    Route::get('/', function(){
+        return view('user.index');
+    })->name('user.index');
+});
 
-Route::resource('products', 'ProductController');
+Route::get('/home', 'FrontController@index')->name('home');
+
+Route::resource('products', 'ProductsController');
+
+Route::resource('category','CategoriesController');
+
 
