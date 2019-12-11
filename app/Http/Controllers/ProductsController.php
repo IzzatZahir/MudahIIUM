@@ -20,9 +20,10 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $products=Product::all();;
+        $products=Product::all()->where('category_id','=',2);
         return view('products.index',compact('products'));
     }
 
@@ -46,29 +47,35 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         // dd(Auth::user()->id);
-        $formInput=$request->except('image');
+        // $formInput=$request->except('image');
 
 //        validation
-        $this->validate($request,[
+        $request->validate([
             'name'=>'required',
             'price'=>'required',
-            'image'=>'image|mimes:png,jpg,jpeg|max:10000'
+            // 'image'=>'image|mimes:png,jpg,jpeg|max:10000'
         ]);
 //        image upload
-        $image=$request->image;
-        if($image){
-            $imageName=$image->getClientOriginalName();
-            $image->move('images',$imageName);
-            $formInput['image']=$imageName;
-        }
-        // $product = new Product([
-        //     'user_id' =>Auth::user()->id,
-        //   ]);
-        //   $product->save();
+        // $image=$request->image;
+        // if($image){
+        //     $imageName=$image->getClientOriginalName();
+        //     $image->move('images',$imageName);
+        //     $formInput['image']=$imageName;
+        // }
+        
 
-
-        Product::create($formInput);
-        return redirect()->route('products.index');
+        $product = new Product([
+            'user_id' =>Auth::user()->id,
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'price'=> $request->get('price'),
+            'category_id'=> $request->get('category_id')
+          ]);
+          $product->save();
+        //  Auth::user()->id->Product::create($formInput);
+        // Product::create($formInput);
+        return redirect()->route('products.index') ->with('success', 'Item has been added')
+;
     }
 
     /**
@@ -158,3 +165,5 @@ class ProductsController extends Controller
         // Product::create($formInput);
     }
 }
+
+
