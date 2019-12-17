@@ -31,6 +31,15 @@
                 {{ Form::file('image',array('class' => 'form-control')) }}
             </div>
 
+            <div class="form-group">
+              <label for="status">Availability:</label>
+              <select name= "status">
+              <option value = 'Available'> Available</option>
+              <option value = 'Reserved'> Reserved</option>
+              <option value = 'Sold'> Sold</option>
+              <select>
+
+            </div>
              {{ Form::submit('Edit', array('class' => 'btn btn-default')) }}
             {!! Form::close() !!}
 

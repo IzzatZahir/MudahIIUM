@@ -35,8 +35,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function(){
 
 Route::get('/home', 'FrontController@index')->name('home');
 
+Route::get('/logout', 'Auth\LoginController@logout');
+
 Route::resource('products', 'ProductsController');
 
 Route::resource('category','CategoriesController');
-
-

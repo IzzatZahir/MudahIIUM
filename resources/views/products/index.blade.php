@@ -22,23 +22,25 @@
   @endif
   <table class="table table-striped">
     <thead>
+    <h1> ITEMS LIST</h1>
 
         <tr>
-        
-          <!-- <td>ID</td> -->
           <td>Item Name</td>
           <td>Description</td>
           <td>Price</td>
+          <td>Image</td>
+          <td>Availability</td>
         
         </tr>
     </thead>
     <tbody>
         @foreach($products as $product)
         <tr>
-            <!-- <td>{{$product->id}}</td> -->
             <td>{{$product->name}}</td>
             <td>{{$product->description}}</td>
             <td>{{$product->price}}</td>
+            <td> <img src="{{ asset('public/images/' . $product->image)}}" width="100px" height="100px" alt="Image"></td>
+            <td>{{$product->status}}</td>
             <td><a href="{{ route('products.edit',$product->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
                 <form action="{{ route('products.destroy', $product->id)}}" method="post">

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,29 +28,5 @@
         </div><!--/Display area after sidenav-->
     </div>
 
-</div><!--/Page Content-->
-
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $(".submenu > a").click(function (e) {
-            e.preventDefault();
-            var $li = $(this).parent("li");
-            var $ul = $(this).next("ul");
-
-            if ($li.hasClass("open")) {
-                $ul.slideUp(350);
-                $li.removeClass("open");
-            } else {
-                $(".nav > li > ul").slideUp(350);
-                $(".nav > li").removeClass("open");
-                $ul.slideDown(350);
-                $li.addClass("open");
-            }
-        });
-    });
-</script>
-
-</body>
+</div>
 </html>

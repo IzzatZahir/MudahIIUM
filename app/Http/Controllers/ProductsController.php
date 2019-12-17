@@ -20,11 +20,14 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    
     public function index()
     {
-        $products=Product::all()->where('category_id','=',2);
+        // (Auth::user()->id);
+        $products=Product::all()->where('id_user','=' ,(Auth::user()->id));
         return view('products.index',compact('products'));
+         
+
     }
 
     /**
@@ -46,34 +49,35 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(Auth::user()->id);
-        // $formInput=$request->except('image');
-
 //        validation
         $request->validate([
             'name'=>'required',
             'price'=>'required',
             // 'image'=>'image|mimes:png,jpg,jpeg|max:10000'
-        ]);
-//        image upload
-        // $image=$request->image;
-        // if($image){
-        //     $imageName=$image->getClientOriginalName();
-        //     $image->move('images',$imageName);
-        //     $formInput['image']=$imageName;
-        // }
-        
+        ]);        
 
-        $product = new Product([
-            'user_id' =>Auth::user()->id,
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
-            'price'=> $request->get('price'),
-            'category_id'=> $request->get('category_id')
-          ]);
+        $product = new Product();
+            
+        $product->name = $request->input('name');
+        $product->id_user =Auth::user()->id;
+        $product->status ='Available';
+        $product->description = $request->input('description');
+        $product->price= $request->input('price');
+        $product->category_id= $request->input('category_id');
+
+        if ($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.'. $extension;
+            $file->move('public/images/', $filename);
+            $product->image = $filename;
+        }
+        else{
+                return $request;
+                $product->image = '';
+        }
           $product->save();
-        //  Auth::user()->id->Product::create($formInput);
-        // Product::create($formInput);
+
         return redirect()->route('products.index') ->with('success', 'Item has been added')
 ;
     }
@@ -86,7 +90,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $products=Product::all()->where('status','!=' ,'Sold');
+        return view('products.show',compact('products'));
     }
 
     /**
@@ -132,7 +137,6 @@ class ProductsController extends Controller
          $product->update($formInput);
         return redirect()->route('products.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -143,26 +147,6 @@ class ProductsController extends Controller
     {
         Product::destroy($id);
         return back();
-    }
-
-    public function uploadImages($productId,Request $request)
-    {
-
-            
-        $product=Product::find($productId);
-
-        //        image upload
-        $image=$request->file('file');
-
-        if($image){
-            $imageName=time(). $image->getClientOriginalName();
-            $image->move('images',$imageName);
-            $imagePath= "/images/$imageName";
-            $product->images()->create(['image_path'=>$imagePath]);
-        }
-
-        return "done";
-        // Product::create($formInput);
     }
 }
 

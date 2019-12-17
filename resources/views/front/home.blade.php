@@ -24,7 +24,7 @@
                 </strong>
             </h2>
             <br>
-            <a href="/"><button class="button large">BUY NOW</button></a>
+            <a href="/products/show"><button class="button large">BUY NOW</button></a>
         </section>
         <br/>
         <div class="subheader text-center">
@@ -36,6 +36,7 @@
         
        
         <div class="row">
+        
             <div class="small-3 columns">
                 <div class="item-wrapper">
                     <div class="img-wrapper">

@@ -20,7 +20,7 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('products.store') }}">
+      <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
           <div class="form-group">
               @csrf
               <label for="name">Product Name:</label>
