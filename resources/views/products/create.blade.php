@@ -21,8 +21,9 @@
       </div><br />
     @endif
       <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+      @csrf
           <div class="form-group">
-              @csrf
+              
               <label for="name">Product Name:</label>
               <input type="text" class="form-control" name="name"/>
           </div>

@@ -15,6 +15,8 @@
 
 <a href="/" class="top-left links" > Home</a>
 
+<a href="/products/show" class="top links" > View All Items</a>
+
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success">

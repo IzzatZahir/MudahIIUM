@@ -41,22 +41,22 @@
                 <div class="item-wrapper">
                     <div class="img-wrapper">
                         <a class="button expanded add-to-cart">
-                            Add to Cart
+                            Buy Item
                         </a>
                         <a href="#">
-                            <img src="http://i.imgur.com/Mcw06Yt.png"/>
+                            <img src="{{url('/public/images/1576659638.jpg')}}"/>
                         </a>
                     </div>
                     <a href="#">
                         <h3>
-                            Books
+                           Engineering Book
                         </h3>
                     </a>
                     <h5>
-                        $19.99
+                        RM 100
                     </h5>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.
+                        Used books
                     </p>
                 </div>
             </div>
@@ -64,22 +64,22 @@
                 <div class="item-wrapper">
                     <div class="img-wrapper">
                         <a class="button expanded add-to-cart">
-                            Add to Cart
+                            Buy Item
                         </a>
                         <a href="#">
-                            <img src="http://i.imgur.com/Mcw06Yt.png"/>
+                            <img src="{{url('/public/images/1576428783.jpg')}}"/>
                         </a>
                     </div>
                     <a href="#">
                         <h3>
-                            Kickin with Kraken Tee
+                        Transporter services
                         </h3>
                     </a>
                     <h5>
-                        $19.99
+                        RM 80
                     </h5>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.
+                    Contact 0122222222
                     </p>
                 </div>
             </div>
@@ -87,22 +87,22 @@
                 <div class="item-wrapper">
                     <div class="img-wrapper">
                         <a class="button expanded add-to-cart">
-                            Add to Cart
+                            Buy Item
                         </a>
                         <a href="#">
-                            <img src="http://i.imgur.com/Mcw06Yt.png"/>
+                        <img src="{{url('/public/images/1576428567.jpg')}}"/>
                         </a>
                     </div>
                     <a href="#">
                         <h3>
-                            Kickin with Kraken Tee
+                        iphone 5s
                         </h3>
                     </a>
                     <h5>
-                        $19.99
+                        RM 200
                     </h5>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.
+                        Good
                     </p>
                 </div>
             </div>
@@ -110,22 +110,22 @@
                 <div class="item-wrapper">
                     <div class="img-wrapper">
                         <a class="button expanded add-to-cart">
-                            Add to Cart
+                            Buy Item
                         </a>
                         <a href="#">
-                            <img src="http://i.imgur.com/Mcw06Yt.png"/>
+                        <img src="{{url('/public/images/1576428727.jpg')}}"/>
                         </a>
                     </div>
                     <a href="#">
                         <h3>
-                            Kickin with Kraken Tee
+                        Lenovo laptop
                         </h3>
                     </a>
                     <h5>
-                        $19.99
+                        RM 500
                     </h5>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.
+                        Good condition
                     </p>
                 </div>
             </div>

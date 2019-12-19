@@ -13,12 +13,12 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $products = Product::all();
+    // public function index()
+    // {
+    //     $products = Product::all();
 
-        return view('categories.index', compact('products'));
-    }
+    //     return view('categories.index', compact('products'));
+    // }
 
     public function show($categoryId=null)
     {
@@ -27,7 +27,7 @@ class CategoriesController extends Controller
         }
         $categories=Category::all();
 
-        return view('category.index',compact(['categories','products']));
+        return view('category.show',compact(['categories','products']));
 
     }
 }
